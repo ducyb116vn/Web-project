@@ -1,0 +1,302 @@
+/* 
+*{
+  list-style: none;
+  text-decoration: none;
+} */
+html {
+  box-sizing: border-box; /*đóng hộp lại → kích thước luôn giữ nguyên*/
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: "Noto Sans", "Helvetica Neue", Helvetica, Arial, "sans-serif"
+}
+header {
+  display: flex;
+  justify-content: space-between; /*2 đầu dính sang 2 mép, khoảng cách = nhau*/
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+button {
+    color: white;
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 2px;
+    padding: 10px;
+    /* cursor: pointer; */
+    transition: opacity 0.5s;
+}
+button:hover {
+    background-color: royalblue;
+    opacity: 0.8;
+}
+.section-2 {
+  display: flex;
+  gap: 30px;
+  align-items: start;
+  padding-bottom: 2rem;
+}
+.feature {
+  background-color: rgba(100, 149, 237, 0.8);
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  color: white;
+  font-size: 110%;
+  font-weight: bold;
+  padding: 1rem;
+}
+.feature:hover {
+  transform: scale(1.05);
+}
+.section-1 {
+  text-align: center;
+  padding: 9%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.section-1 h1 {
+  font-size: 2.5rem;
+  color: rgba(0, 0, 0, 0.705)
+}
+.section-1 p {
+  font-size: 1.2rem;
+  color: white
+}
+@media (max-width: 768px) {
+  .section-2 {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .feature {
+    width: 80%;
+  }
+  img {
+    width: 80%;
+  }
+  .text {
+    width: 65%;
+  }
+
+  .search-input {
+    min-width: 250px;
+  }
+  .nav_bar {
+    display: flex;
+
+  }
+
+  
+}
+.logo img {
+  height: 150px;
+  padding-left: 50px;
+  cursor: pointer;
+}
+.container {
+  height: 100%;
+  background-image: url(https://accminecraft.net/image/minecraft-hoa-anh-dao-background.webp);
+  background-position: center;
+  padding: 5.5rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; /*Whether the background image scrolls with the page or stays fixed*/
+}
+.header-container {
+  /* align-items: center; */
+  background-color: rgba(0, 0, 0 , 0.8);
+}
+.text {
+  padding-right: 50px;
+  text-align: center;
+}
+@keyframes changeColor {
+  0%   { color: red; }
+  14%  { color: blue; }
+  28% { color: green; }
+  42% { color: yellow; }
+  56% { color: orange; }
+  70% { color: purple; }
+  84% { color: pink; }
+  100% { color: red; }
+}
+.blink {
+  animation: changeColor 5s infinite;
+}
+.nut {
+  font-size: 100%;
+  font-weight: bold;
+}
+.text a {
+  font-size: 100%;
+  font-weight: bold;
+}
+.search {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  width: 50%; 
+}
+.search-input {
+  width: 20%;
+  padding: 1rem;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.8);
+  outline: none;
+
+  
+}
+.details {
+  opacity: 0;
+  transition: all 0.5s ease;
+  margin-top: 10px;
+  height: 0px;
+  overflow: hidden;
+}
+.feature:hover .details {
+  opacity: 1;
+  height: 200px;
+}
+.title {
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  text-decoration: underline;
+}
+.details2 {
+  opacity: 0;
+  transition: all 0.5s ease;
+  margin-top: 10px;
+  height: 0px;
+  overflow: hidden;
+}
+.feature:hover .details2 {
+  opacity: 1;
+  height: 220px;
+}
+.details3 {
+  opacity: 0;
+  transition: all 0.5s ease;
+  margin-top: 10px;
+  height: 0px;
+  overflow: hidden;
+}
+.feature:hover .details3 {
+  opacity: 1;
+  height: 170px;
+}
+.details4 {
+  opacity: 0;
+  transition: all 0.5s ease;
+  margin-top: 10px;
+  height: 0px;
+  overflow: hidden;
+}
+.feature:hover .details4 {
+  opacity: 1;
+  height: 200px;
+}
+.explain {
+  text-align: left;
+}
+
+.account-button {
+  position: relative;
+}
+
+.select-2 {
+  position: absolute;
+  color: white; 
+  right: 0;
+  opacity: 0;
+  padding-top: 2rem;
+  transition: opacity 0.8s;
+  font-size: 15x;
+}
+
+.account-button:hover .select-1,
+.account-button:hover .select-2 {
+  opacity: 1;
+  
+}
+
+.select-1 {
+  position: absolute;
+  right: 7px;
+  color: white; 
+  opacity: 0;
+  padding-top: 0.5rem;
+  transition: opacity 0.8s;
+  font-size: 16px;
+}
+
+.select-2:hover {
+  text-decoration: underline;
+}
+
+.select-1:hover {
+  text-decoration: underline;
+}
+
+.nav_bar{
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-right: 2rem;
+  font-weight: bold;
+  color: white;
+  
+}
+
+.nav_bar-item {
+cursor: pointer;
+transition: all 0.3s;
+}
+
+.nav_bar-item p:hover {
+  opacity: 0.5;
+}
+
+.account {
+  position: relative;
+}
+
+.account:hover  > .account-menu {
+  display: block;
+}
+
+.account-menu {
+  display: none;
+  position: absolute;
+  top: 60%;
+  right: 0;
+  /* background-color: white; */
+  color: white;
+
+}
+
+.account-menu li:first-child:hover {
+  opacity: 0.5;
+}
+
+.account-menu li:last-child:hover {
+  opacity: 0.5;
+}
+
+.account-menu li {
+  transition: all 0.3s;
+  text-align: right;
+  list-style-type: none;
+  font-size: 14px;
+}

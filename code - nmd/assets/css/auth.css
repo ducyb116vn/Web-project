@@ -1,0 +1,14 @@
+@keyframes changeColor {
+  0%   { color: red; }
+  14%  { color: blue; }
+  28% { color: green; }
+  42% { color: yellow; }
+  56% { color: orange; }
+  70% { color: purple; }
+  84% { color: pink; }
+  100% { color: red; }
+}
+
+.blink {
+  animation: changeColor 5s infinite;
+}

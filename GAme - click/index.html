@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Click The Button</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="h-screen overflow-hidden flex flex-col items-center bg-gray-100">
+
+  <h1 class="text-3xl font-bold mt-6">🎯 Click The Button</h1>
+
+  <div class="mt-4 text-lg flex gap-2">
+    ⏱️ Time: <p id="time" class="font-bold">15</p>
+    ⭐ Score: <p id="score" class="font-bold">0</p>
+  </div>
+
+  <button id="startBtn"
+    class="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition select-none">
+    Start Game
+  </button>
+
+  <button id="gameBtn"
+    class="absolute hidden px-6 py-3 bg-red-500 text-white rounded-lg text-lg hover:scale-110 transition select-none">
+    Click me!
+  </button>
+
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const gameBtn = document.getElementById("gameBtn");
+    const scoreElement = document.getElementById("score");
+    const timeElement = document.getElementById("time");
+
+    let score = 0;
+    let time = 0;
+    let timer;
+    let scale = 1;
+    function randomPosition() {
+      const maxX = window.innerWidth - gameBtn.offsetWidth;
+      const maxY = window.innerHeight - gameBtn.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      gameBtn.style.left = x + "px";
+      gameBtn.style.top = y + "px";
+    }
+
+    startBtn.onclick = () => {
+      score = 0;
+      time = 15;
+      scale = 1;
+      scoreElement.textContent = score;
+      timeElement.textContent = time;
+      gameBtn.style.transform = "scale(1)";
+      gameBtn.classList.remove("hidden");
+      randomPosition();
+
+      clearInterval(timer);
+      timer = setInterval(() => {
+        time--;
+        timeElement.textContent = time;
+
+        if (time === 0) {
+          clearInterval(timer);
+          gameBtn.classList.add("hidden");
+          if (score <= 10) {
+            alert("CON GÀ! ĐƯỢC CÓ: " + score);
+          } else if (score > 10 && score <= 25) {
+            alert("CÓ TIẾN TRIỂN!:" + score);
+          } else if (score > 25 && score <= 50) {
+            alert("GOAT:" + score);
+          }
+        }
+      }, 1000);
+    };
+
+    gameBtn.onclick = () => {
+      score++;
+      scoreElement.textContent = score;
+      scale -= 0.1;
+      if (scale < 0.4) {
+        scale = 0.4; }
+      gameBtn.style.transform = `scale(${scale})`;
+      randomPosition();
+
+    };
+  </script>
+
+</body>
+
+</html>
+
+

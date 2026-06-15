@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div class="main h-screen w-screen bg-[#191919] ">
+        <div class=" header w-full flex flex-col justify-center items-center p-10 text-white gap-5">
+            <p class="text-[80px] font-semibold">Keo bua bao</p>
+            <div class="button flex gap-5">
+                <button class="p-10 bg-[#191919] rounded-[80px] border-[6px] cursor-pointer" onclick="
+        const randomNumber = Math.random();
+        let computerMove = '';
+        if (randomNumber >= 2 / 3 && randomNumber < (5 / 2) / 3 ) {
+            computerMove = ('Keo');
+        } else if (randomNumber >= 0 && randomNumber < 2/3 ) {
+            computerMove = ('Bua');
+        } else if (randomNumber >= (5 / 2) / 3 ) {
+            computerMove = ('Bao');
+        }
+
+        let result = '';
+        if (computerMove === 'Keo') {
+            result = 'Tie.';
+        } else if (computerMove === 'Bua') {
+            result = 'Lose.';
+        } else if (computerMove ==='Bao') {
+            result = 'Win.'
+        }
+        alert(`You picked Keo. Computer picked ${computerMove}. ${result}`);
+    "><i class="fa-solid fa-hand-scissors text-[60px]" style="color: #FFD43B;"></i></button>
+                <button class="p-10 bg-[#191919] rounded-[80px] border-[6px] cursor-pointer" onclick="
+        const randomNumber = Math.random();
+        let computerMove = '';
+        if (randomNumber >= (5 / 2) / 3) {
+            computerMove = ('Keo');
+        } else if (randomNumber >= 2 / 3 && randomNumber < (5 / 2) / 3 ) {
+            computerMove = ('Bua');
+        } else if (randomNumber >= 0 && randomNumber < 2/3) {
+            computerMove = ('Bao');
+        }
+
+        let result = '';
+        if (computerMove === 'Keo') {
+            result = 'Win.';
+        } else if (computerMove === 'Bua') {
+            result = 'Tie.';
+        } else if (computerMove ==='Bao') {
+            result = 'Lose.'
+        }
+        alert(`You picked Bua. Computer picked ${computerMove}. ${result}`);
+    "><i class="fa-solid fa-hand-back-fist text-[60px]" style="color: #FFD43B;"></i></button>
+                <button class="p-10 bg-[#191919] rounded-[80px] border-[6px] cursor-pointer" onclick="
+        const randomNumber = Math.random();
+        let computerMove = '';
+        if (randomNumber >= 0 && randomNumber < 2 / 3) {
+            computerMove = ('Keo');
+        } else if (randomNumber >= 2 / 3 && randomNumber < (5 / 2) / 3 ) {
+            computerMove = ('Bua');
+        } else if (randomNumber >= (5 / 2) / 3) {
+            computerMove = ('Bao');
+        }
+
+        let result = '';
+        if (computerMove === 'Keo') {
+            result = 'Lose.';
+        } else if (computerMove === 'Bua') {
+            result = 'Win.';
+        } else if (computerMove ==='Bao') {
+            result = 'Tie.';
+        }
+        alert(`You picked Bao. Computer picked ${computerMove}. ${result}`);
+    "><i class="fa-solid fa-hand text-[60px]" style="color: #FFD43B;"></i></button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" class="box-border">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clone Website Exercise</title>
+  <!-- <link rel="stylesheet" href="./assets/css/auth.css"> -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @keyframes faded {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .faded {
+      animation: faded 1s ease-out forwards;
+    }
+
+
+    @keyframes rainbow {
+      0% {
+        color: red;
+      }
+
+      14% {
+        color: orange;
+      }
+
+      28% {
+        color: yellow;
+      }
+
+      42% {
+        color: green;
+      }
+
+      57% {
+        color: blue;
+      }
+
+      71% {
+        color: indigo;
+      }
+
+      85% {
+        color: violet;
+      }
+
+      100% {
+        color: red;
+      }
+    }
+
+    .blink {
+      animation: rainbow 2s linear infinite;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-60px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-slide-left {
+      animation: slideInLeft 0.8s ease-out forwards;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-slide-right {
+      animation: slideInRight 0.8s ease-out forwards;
+    }
+
+    @media (max-width: 1023px) {
+
+      .animate-slide-left,
+      .animate-slide-right {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div
+    class="w-full min-h-screen bg-[url('https://i.redd.it/i-drew-myself-a-4k-wallpaper-inspired-by-epic-scenery-from-v0-m1l0w82t84i81.jpg?width=3246&format=pjpg&auto=webp&s=b9c42f0ee763985d8601647278ba630495ee55c4')] bg-cover bg-bottom ">
+
+    <header
+      class="header w-full  flex justify-between bg-black/70 px-10 flex-wrap max-md:flex-col max-md:items-center max-md:justify-center max-lg:flex-col max-lg:items-center max-lg:justify-center">
+      <a href="index.html" rel="noopener">
+        <img class="w-40 h-40 max-md:w-30 max-md:h-30 animate-slide-left"
+          src="https://www.pngplay.com/wp-content/uploads/11/Minecraft-Logo-Transparent-PNG.png" alt="Logo" />
+      </a>
+      <input id="menu-toggle" type="checkbox" class="hidden peer" />
+      <label for="menu-toggle"
+        class="fa-solid fa-angle-down text-white text-3xl opacity-0 max-lg:block max-lg:opacity-100"></label>
+      <div
+        class="menu animate-slide-right duration-300 max-lg:max-h-0 max-lg:opacity-0 peer-checked:max-lg:max-h-60 peer-checked:max-lg:opacity-100 flex gap-10 text-white font-semibold text-lg items-center max-lg:flex-col max-lg:mt-4">
+        <p class="cursor-pointer hover:opacity-50 duration-150 text-2xl max-lg:text-xl"><a href="#CSKH">About</a></p>
+        <p class="cursor-pointer hover:opacity-50 duration-150 text-2xl max-lg:text-xl"><a href="#service">Service</a>
+        </p>
+        <p class="cursor-pointer hover:opacity-50 duration-150 text-2xl max-lg:text-xl"><a href="#CSKH">Contact</a></p>
+        <div class="relative group">
+          <p class="cursor-pointer hover:opacity-50 duration-150 max-lg:hidden text-2xl">Account</p>
+          <ul class="hidden absolute right-0 text-white group-hover:block ">
+            <li class="text-right text-2xl hover:opacity-50 duration-150 max-lg:hidden"><a href="login.html">Login</a>
+            </li>
+            <li class="text-right text-2xl hover:opacity-50 duration-150 max-lg:hidden"><a
+                href="register.html">Register</a></li>
+          </ul>
+          <p class="cursor-pointer hover:opacity-50 duration-150 lg:hidden text-xl">
+            <a href="login.html">Account</a>
+          </p>
+        </div>
+      </div>
+    </header>
+    <div class="Introduction faded [animation-delay:200ms] flex flex-col items-center py-8 gap-10 text-center">
+      <p class="text-white text-5xl font-semibold drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]">Welcome To AccMinecraft</p>
+      <p class="blink text-xl ">Where Has A Lot of Reasonable Premium Minecraft Accounts</p>
+      <button class=" bg-blue-300/80 p-3 rounded-lg duration-150"><a
+          class="cursor-pointer text-purple-800 hover:text-purple-600 font-semibold text-lg"
+          href="https://www.minecraftforum.net/forums/minecraft-java-edition/discussion/2130997-difference-between-premium-account-and-regular"
+          target="_blank" rel="noopener">What is Premium Minecraft Account?</a></button>
+      <input class="rounded-lg min-w-[360px] xl:w-200 bg-white/80 p-3" type="text" placeholder="Tìm kiếm ở đây...">
+    </div>
+    <div class="ITEMS w-full faded mt-10 flex justify-around flex-wrap gap-x-6 gap-y-10 max-lg:p-3">
+      <div class="NFA w-70 cursor-pointer hover:scale-105 duration-150">
+        <div
+          class="h-60 bg-[url(https://accminecraft.net/image/product/ae74e64e015aa2f60cbf49a2505136724WyOd)] bg-cover bg-bottom rounded-t-lg">
+        </div>
+        <div class="h-35 bg-white/80 flex flex-col items-center p-1 rounded-b-lg text-center">
+          <p>Non-Full Access Accounts</p>
+          <p>Price: 3$</p>
+          <p>NFA means you do not have any access to your account.(Email, Password, Skin,...)</p>
+        </div>
+      </div>
+      <div class="SFA w-70 cursor-pointer hover:scale-105 duration-150">
+        <div
+          class="h-60 bg-[url(https://accminecraft.net/image/product/ae74e64e015aa2f60cbf49a2505136724WyOd)] bg-cover bg-bottom rounded-t-lg">
+        </div>
+        <div class="h-35 bg-white/80 flex flex-col items-center p-1 rounded-b-lg text-center">
+          <p>Semi-Full Access Accounts</p>
+          <p>Price: 7$</p>
+          <p>SFA means you have limited access to your account.(Email or Password or Skin or,...)</p>
+        </div>
+      </div>
+      <div class="MFA w-70 cursor-pointer hover:scale-105 duration-150">
+        <div
+          class="h-60 bg-[url(https://accminecraft.net/image/product/ae74e64e015aa2f60cbf49a2505136724WyOd)] bg-cover bg-bottom rounded-t-lg">
+        </div>
+        <div class="h-35 bg-white/80 flex flex-col items-center p-1 rounded-b-lg text-center">
+          <p>Mail-Full Access Accounts</p>
+          <p>Price: 15$</p>
+          <p>MFA means you have full access to your account's email</p>
+        </div>
+      </div>
+      <div class="Cape w-70 cursor-pointer hover:scale-105 duration-150">
+        <div
+          class="h-60 bg-[url(https://accminecraft.net/image/product/ae74e64e015aa2f60cbf49a2505136724WyOd)] bg-cover bg-bottom rounded-t-lg">
+        </div>
+        <div class="h-35 bg-white/80 flex flex-col items-center p-1 rounded-b-lg text-center">
+          <p>Cape OF</p>
+          <p>Price: 5$</p>
+          <p>It's a custom cape attached to your Minecraft character ( Using OptiFine to see your cape)</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div
+    class="splitter block min-h-30 w-full bg-[url(https://www.minecraft.net/content/dam/minecraft/home/bg-lightwool.png)]">
+  </div>
+  <section id="service"
+    class="w-full flex flex-col items-center bg-[url(https://www.minecraft.net/content/dam/minecraft/home/bg-lightwool.png)]">
+    <p class="font-semibold text-3xl text-center">CUNG CẤP BẢN QUYỀN MINECRAFT CHÍNH HÃNG - JAVA EDITION & BEDROCK
+      EDITION CHO PC </p>
+    <p class="font-semibold text-3xl text-center">MUA MINECRAFT PREMIUM TẠI ACCMINECRAFT.NET</p>
+    <img class="mt-15"
+      src="https://student-cms.prd.timeshighereducation.com/sites/default/files/styles/default/public/2025-03/Minecraft%20press%20image.jpg?itok=Vdm7R1Vz"
+      alt="">
+    <p class="">Shop Minecraft uy tín - Tự động giao tài khoản 100%</p>
+    <p>Hỗ trợ 24/7 - Tài khoản bảo hành theo chính sách của Minecraft.net</p>
+  </section>
+  <section
+    class="w-full flex flex-col items-center bg-[url(https://www.minecraft.net/content/dam/minecraft/home/bg-lightwool.png)]">
+    <p class="font-semibold text-3xl text-center pt-10">QUÁ TRÌNH MUA MINECRAFT BẢN QUYỀN TẠI ACCMINECRAFT.NET</p>
+    <div class="w-full max-w-5xl">
+      <div class="relative w-full aspect-video">
+        <iframe class="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/owUaQ8Fz7ek?si=6fLDTFDV0tHO73mi" title="YouTube video player"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+  <section id="CSKH"
+    class="bg-[url(https://www.minecraft.net/content/dam/minecraft/backgrounds/bg-wool-dark.png)] w-full flex flex-row  items-start justify-evenly flex-wrap">
+    <div class="column w-80 text-white py-20">
+      <p class="font-semibold text-3xl">Về chúng tôi</p>
+      <p class="bg-purple-600 rounded-lg p-2 font-semibold text-base py-2"> " Tại Accminecraft.net, chúng tôi tự hào là
+        một địa chỉ tin cậy với sự uy tín và trách nhiệm cao. Chúng tôi cam
+        kết giao hàng nhanh chóng cho khách hàng, với hệ thống giao hàng tự động sẽ giao hàng ngay lập tức trong vòng
+        chưa tới 1 phút. Bộ phận hỗ trợ của chúng tôi hoạt động liên tục 24/7, luôn sẵn sàng đáp ứng mọi nhu cầu và thắc
+        mắc của khách hàng. Chúng tôi chắc chắn sẽ giúp đỡ và hỗ trợ bạn trong mọi lúc. " </p>
+    </div>
+    <div class="column w-80 text-white py-20">
+      <p class="font-semibold text-3xl">Thông tin liên hệ</p>
+      <p class="font-semibold text-base py-2"> CSKH: *******@accminecraft.net (trả lời không quá 24h) </p>
+    </div>
+    <div class="column w-90 text-white py-20">
+      <p class="font-semibold text-3xl">Phương thức thanh toán</p>
+      <img src="https://accminecraft.net/image/homepage2/paymentMethod.png" alt="">
+    </div>
+
+  </section>
+  <script src="main.js"></script>
+
+</body>
+
+</html>

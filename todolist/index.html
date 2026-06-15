@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<style>
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .example::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .example {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+</style>
+
+<body>
+    <div
+        class="big-container w-screen h-screen bg-[linear-gradient(135deg,#667eea,#764ba2)] items-center flex justify-center">
+        <div class="small w-[1024px] h-[768px] flex flex-col items-center gap-10 justify-center rounded-2xl font-mono">
+            <div class="to-do-list">
+                <h1 class="font-semibold text-3xl">To-do List</h1>
+            </div>
+            <div class="member flex w-[1024px] h-[568px] justify-evenly">
+                <div class="vlnm p-10 flex flex-col gap-10 bg-blue-300 rounded-lg items-center">
+                    <p class="text-xl font-semibold">Daily exercises - VLNM</p>
+                    <div class="exercise flex flex-col gap-3 overflow-y-auto example">
+                        <div class="row flex items-center relative ">
+                            <input class="bg-[#f6f6f6] rounded-lg px-5 py-4 outline-none " id="input-box" type="text"
+                                placeholder="+ Add a task..">
+                            <button
+                                class=" bg-yellow-200 rounded-lg px-5 py-4 absolute right-0 cursor-pointer " onclick="addTask()">Add</button>
+                        </div>
+                        <div
+                            class="group border-[#f6f6f6] border px-5 py-4 flex justify-between items-center rounded-lg">
+                            <label for="menu-toggle" class="cursor-pointer select-none">
+                                <input id="menu-toggle" type="checkbox" class="hidden peer">
+                                <p class="peer-checked:hidden">Daily report</p>
+                                <p class="hidden peer-checked:block line-through">Daily report</p>
+                            </label>
+                            <i class="fa-regular fa-star hover:text-yellow-400 cursor-pointer"></i>
+                        </div>
+                        <div
+                            class="group border-[#f6f6f6] border px-5 py-4 flex justify-between items-center rounded-lg">
+                            <label for="menu-toggle-1" class="cursor-pointer select-none">
+                                <input id="menu-toggle-1" type="checkbox" class="hidden peer">
+                                <p class="peer-checked:hidden">HTML/CSS</p>
+                                <p class="hidden peer-checked:block line-through">HTML/CSS</p>
+                            </label>
+                            <i class="fa-regular fa-star hover:text-yellow-400 cursor-pointer"></i>
+                        </div>
+                        <div
+                            class="group border-[#f6f6f6] border px-5 py-4 flex justify-between items-center rounded-lg">
+                            <label for="menu-toggle-2" class="cursor-pointer select-none">
+                                <input id="menu-toggle-2" type="checkbox" class="hidden peer">
+                                <p class="peer-checked:hidden">JS</p>
+                                <p class="hidden peer-checked:block line-through">JS</p>
+                            </label>
+                            <i class="fa-regular fa-star hover:text-yellow-400 cursor-pointer"></i>
+                        </div>
+                        <div
+                            class="group border-[#f6f6f6] border px-5 py-4 flex justify-between items-center rounded-lg">
+                            <label for="menu-toggle-3" class="cursor-pointer select-none">
+                                <input id="menu-toggle-3" type="checkbox" class="hidden peer">
+                                <p class="peer-checked:hidden">Clone web</p>
+                                <p class="hidden peer-checked:block line-through">Clone web</p>
+                            </label>
+                            <i class="fa-regular fa-star hover:text-yellow-400 cursor-pointer"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class=" nmd p-10 flex flex-col gap-10 bg-blue-300 rounded-lg items-center">
+                    <p class="text-xl font-semibold">Daily exercises - NMD</p>
+                    <div class="exercise flex flex-col gap-3 overflow-y-auto example">
+                        <div class="row flex items-center relative ">
+                            <input class="bg-[#f6f6f6] rounded-lg px-5 py-4 outline-none  " id="input-box-nmd" type="text"
+                                placeholder="+ Add a task..">
+                            <button
+                                class=" bg-yellow-200 rounded-lg px-5 py-4 absolute right-0 cursor-pointer " onclick="addTask2()">Add</button>
+                        </div>
+                        <div
+                            class="group border-[#f6f6f6] border px-5 py-4 flex justify-between items-center rounded-lg">
+                            <label for="menu-toggle-7" class="cursor-pointer select-none">
+                                <input id="menu-toggle-7" type="checkbox" class="hidden peer">
+                                <p class="peer-checked:hidden">Daily report</p>
+                                <p class="hidden peer-checked:block line-through">Daily report</p>
+                            </label>
+                            <i class="fa-regular fa-star hover:text-yellow-400 cursor-pointer"></i>
+                        </div>
+                        <div
+                            class="group border-[#f6f6f6] border px-5 py-4 flex justify-between items-center rounded-lg">
+                            <label for="menu-toggle-4" class="cursor-pointer select-none">
+                                <input id="menu-toggle-4" type="checkbox" class="hidden peer">
+                                <p class="peer-checked:hidden">HTML/CSS</p>
+                                <p class="hidden peer-checked:block line-through">HTML/CSS</p>
+                            </label>
+                            <i class="fa-regular fa-star hover:text-yellow-400 cursor-pointer"></i>
+                        </div>
+                        <div
+                            class="group border-[#f6f6f6] border px-5 py-4 flex justify-between items-center rounded-lg">
+                            <label for="menu-toggle-5" class="cursor-pointer select-none">
+                                <input id="menu-toggle-5" type="checkbox" class="hidden peer">
+                                <p class="peer-checked:hidden">JS</p>
+                                <p class="hidden peer-checked:block line-through">JS</p>
+                            </label>
+                            <i class="fa-regular fa-star hover:text-yellow-400 cursor-pointer"></i>
+                        </div>
+                        <div
+                            class="group border-[#f6f6f6] border px-5 py-4 flex justify-between items-center rounded-lg">
+                            <label for="menu-toggle-6" class="cursor-pointer select-none">
+                                <input id="menu-toggle-6" type="checkbox" class="hidden peer">
+                                <p class="peer-checked:hidden">Clone web</p>
+                                <p class="hidden peer-checked:block line-through">Clone web</p>
+                            </label>
+                            <i class="fa-regular fa-star hover:text-yellow-400 cursor-pointer"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="main.js"></script>
+</body>
+
+</html>
