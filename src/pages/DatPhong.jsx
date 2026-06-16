@@ -1,7 +1,8 @@
 import { useHotel } from "../context/HotelContext";
 
 export default function DatPhong() {
-  const { datPhongList } = useHotel();
+  // 🔄 Đã đồng bộ đúng tên biến datphong từ HotelContext
+  const { datphong } = useHotel();
 
   return (
     <div className="space-y-6 text-gray-300 p-6">
@@ -10,7 +11,7 @@ export default function DatPhong() {
         <p className="text-xs text-gray-400 mt-1">Dữ liệu đồng bộ trực tiếp với thực thể DATPHONG (Lịch sử thuê phòng)</p>
       </div>
 
-      {/* Bảng danh sách đặt phòng */}
+          {/* Bảng danh sách đặt phòng */}
       <div className="bg-[#1e293b]/20 border border-gray-800 rounded-xl overflow-hidden shadow-lg">
         <div className="overflow-x-auto">
           <table className="w-full text-[13px] border-collapse text-left">
@@ -26,23 +27,32 @@ export default function DatPhong() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-800/40">
-              {datPhongList.map((bp) => (
-                <tr key={bp.MADAT} className="hover:bg-gray-800/10 transition-colors">
-                  <td className="px-4 py-3.5 font-mono font-bold text-indigo-400">{bp.MADAT}</td>
-                  <td className="px-4 py-3.5 font-bold font-mono text-white">{bp.MAPHONG}</td>
-                  <td className="px-4 py-3.5 font-mono text-gray-300">{bp.MAKH}</td>
-                  <td className="px-4 py-3.5 text-gray-400">
-                    {new Date(bp.NGAYDAT).toLocaleDateString("vi-VN")}
+              {datphong && datphong.length > 0 ? (
+                datphong.map((bp) => (
+                  <tr key={bp.madat} className="hover:bg-gray-800/10 transition-colors">
+                    {/* 🔄 Chuyển toàn bộ key gọi dữ liệu sang chữ thường khớp với Context */}
+                    <td className="px-4 py-3.5 font-mono font-bold text-indigo-400">{bp.madat}</td>
+                    <td className="px-4 py-3.5 font-bold font-mono text-white">{bp.maphong}</td>
+                    <td className="px-4 py-3.5 font-mono text-gray-300">{bp.makh}</td>
+                    <td className="px-4 py-3.5 text-gray-400">
+                      {bp.ngaydat ? new Date(bp.ngaydat).toLocaleDateString("vi-VN") : "---"}
+                    </td>
+                    <td className="px-4 py-3.5 text-emerald-400 font-medium">
+                      {bp.ngaynhan ? new Date(bp.ngaynhan).toLocaleDateString("vi-VN") : "---"}
+                    </td>
+                    <td className="px-4 py-3.5 text-rose-400 font-medium">
+                      {bp.ngaytra ? new Date(bp.ngaytra).toLocaleDateString("vi-VN") : "---"}
+                    </td>
+                    <td className="px-4 py-3.5 text-center font-mono text-gray-200">{bp.songuoi}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="7" className="px-4 py-8 text-center text-gray-500 text-xs">
+                    Chưa có lịch sử đặt phòng nào được ghi nhận.
                   </td>
-                  <td className="px-4 py-3.5 text-emerald-400 font-medium">
-                    {new Date(bp.NGAYNHAN).toLocaleDateString("vi-VN")}
-                  </td>
-                  <td className="px-4 py-3.5 text-rose-400 font-medium">
-                    {new Date(bp.NGAYTRA).toLocaleDateString("vi-VN")}
-                  </td>
-                  <td className="px-4 py-3.5 text-center font-mono text-gray-200">{bp.SONGUOI}</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
