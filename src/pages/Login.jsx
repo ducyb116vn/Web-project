@@ -19,6 +19,9 @@ export default function Login() {
     const success = loginEmployee(manv, matkhau);
     if (!success) {
       setError("Mã nhân viên hoặc Mật khẩu không chính xác.");
+    } else {
+      // 💾 LƯU VÀO BỘ NHỚ: Khi đăng nhập thành công, lưu lại mã nhân viên vào trình duyệt
+      localStorage.setItem("manv_current", manv);
     }
   };
 
