@@ -45,7 +45,10 @@ export function HotelProvider({ children }) {
     { manv: "NV002", hoten: "Phạm Minh Hoàng", sdt: "0944444444", email: "ducpm@hotel.com", catruc: "Tối", matkhau: "123456" }
   ]);
 
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(() => {
+    const savedUser = localStorage.getItem("hotel_user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   const [dichvu, setDichvu] = useState([
     // BỘ PHẬN ĐỒ UỐNG (MINIBAR)
@@ -181,6 +184,9 @@ export function HotelProvider({ children }) {
     const nv = nhanvien.find(n => n.manv === manv && n.matkhau === matkhau);
     if (nv) {
       setCurrentUser(nv);
+
+      // 💾 LƯU VÀO BỘ NHỚ: Lưu nguyên Object nhân viên dưới dạng chuỗi JSON
+      localStorage.setItem("hotel_user", JSON.stringify(nv));
       return true;
     }
     return false;
@@ -188,6 +194,9 @@ export function HotelProvider({ children }) {
 
   const logoutEmployee = () => {
     setCurrentUser(null);
+
+    // ❌ XÓA KHỎI BỘ NHỚ: Khi đăng xuất thì xóa dấu vết luôn
+    localStorage.removeItem("hotel_user");
   };
 
   return (
