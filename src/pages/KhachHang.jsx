@@ -9,7 +9,7 @@ export default function KhachHang() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // State lưu trữ dữ liệu form thêm mới (Khớp 100% thuộc tính chữ thường của DB)
+  // State lưu trữ dữ liệu form thêm mới
   const [formData, setFormData] = useState({
     hoten: "",
     ngaysinh: "",
@@ -26,23 +26,29 @@ export default function KhachHang() {
     kh.sdt.includes(searchTerm)
   );
 
-  // Xử lý Thêm mới khách hàng (Tương đương câu lệnh INSERT INTO KHACHHANG)
+  // Xử lý Thêm mới khách hàng
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Tự động sinh mã khách hàng mới tăng dần (Ví dụ: KH003, KH004...)
+    // Tự động sinh mã khách hàng mới tăng dần (KH001, KH002...)
     const currentIndex = khachhang.length > 0 
       ? Math.max(...khachhang.map(kh => parseInt(kh.makh.replace("KH", "")))) 
       : 0;
     const maKhMoi = `KH${String(currentIndex + 1).padStart(3, "0")}`;
 
     const khachHangMoi = {
-      makh: maKhMoi, // Khóa chính (Primary Key)
+      makh: maKhMoi,
       ...formData
     };
 
-    // Cập nhật mảng State toàn cục trong Context
-    setKhachhang(prev => [...prev, khachHangMoi]);
+    // Tạo mảng mới chứa cả khách hàng cũ và khách hàng mới
+    const danhSachMoi = [...khachhang, khachHangMoi];
+
+    // 1. Cập nhật lên Giao diện (React State)
+    setKhachhang(danhSachMoi);
+
+    // 2. 💾 LƯU VÀO BỘ NHỚ: Cập nhật lại cục dữ liệu mới xuống trình duyệt
+    localStorage.setItem("hotel_khachhang", JSON.stringify(danhSachMoi));
 
     // Đóng modal và reset form nhập liệu
     setIsModalOpen(false);
@@ -55,6 +61,20 @@ export default function KhachHang() {
       sdt: "",
       cccd: ""
     });
+  };
+
+  // Hàm xử lý Xóa khách hàng
+  const handleXoaKhachHang = (makh) => {
+    if (window.confirm(`Cậu có chắc chắn muốn xóa khách hàng mang mã ${makh} này không?`)) {
+      // Lọc bỏ khách hàng được chọn ra khỏi mảng
+      const danhSachSauXoa = khachhang.filter(kh => kh.makh !== makh);
+
+      // 1. Cập nhật lên Giao diện (React State)
+      setKhachhang(danhSachSauXoa);
+      
+      // 2. 💾 CẬP NHẬT LẠI BỘ NHỚ: Ghi đè danh sách mới đã xóa xuống trình duyệt
+      localStorage.setItem("hotel_khachhang", JSON.stringify(danhSachSauXoa));
+    }
   };
 
   return (
@@ -99,6 +119,7 @@ export default function KhachHang() {
                 <th className="px-4 py-3.5 text-center">Giới tính</th>
                 <th className="px-4 py-3.5">Địa chỉ</th>
                 <th className="px-4 py-3.5">Ngày sinh</th>
+                <th className="px-4 py-3.5 text-center">Hành động</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-800/40">
@@ -121,13 +142,22 @@ export default function KhachHang() {
                       {kh.diachi}
                     </td>
                     <td className="px-4 py-3.5 text-gray-400">
-                      {new Date(kh.ngaysinh).toLocaleDateString("vi-VN")}
+                      {kh.ngaysinh ? new Date(kh.ngaysinh).toLocaleDateString("vi-VN") : ""}
+                    </td>
+                    <td className="px-4 py-3.5 text-center">
+                      <button
+                        type="button"
+                        onClick={() => handleXoaKhachHang(kh.makh)}
+                        className="bg-red-500/10 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/20 px-2.5 py-1 rounded transition-all text-xs font-medium cursor-pointer"
+                      >
+                        Xóa
+                      </button>
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan="8" className="px-4 py-8 text-center text-gray-500 text-xs">
+                  <td colSpan="9" className="px-4 py-8 text-center text-gray-500 text-xs">
                     Không tìm thấy dữ liệu khách hàng phù hợp.
                   </td>
                 </tr>
@@ -160,7 +190,6 @@ export default function KhachHang() {
             {/* Form Nhập liệu */}
             <form onSubmit={handleSubmit} className="space-y-4">
               
-              {/* Họ tên khách hàng */}
               <div className="space-y-1">
                 <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Họ và tên (hoten)</label>
                 <input
@@ -170,7 +199,6 @@ export default function KhachHang() {
                 />
               </div>
 
-              {/* Hàng 2: Số CCCD & Số điện thoại */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
                   <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Số CCCD / Định danh</label>
@@ -190,7 +218,6 @@ export default function KhachHang() {
                 </div>
               </div>
 
-              {/* Email liên hệ */}
               <div className="space-y-1">
                 <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Thư điện tử (email)</label>
                 <input
@@ -200,7 +227,6 @@ export default function KhachHang() {
                 />
               </div>
 
-              {/* Hàng 3: Ngày sinh & Giới tính */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
                   <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Ngày sinh (ngaysinh)</label>
@@ -222,7 +248,6 @@ export default function KhachHang() {
                 </div>
               </div>
 
-              {/* Địa chỉ cư trú */}
               <div className="space-y-1">
                 <label className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Địa chỉ thường trú (diachi)</label>
                 <input
